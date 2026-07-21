@@ -47,15 +47,15 @@ To complement the ETL pipeline, custom DAX logic was created to calculate core r
   
 ## ⚙️ Data Pipeline Architecture (ETL Steps)
 
-[ Raw Country CSV Files ] 
-         │
-         ▼ (Folder Import in Power Query)
+[ Raw Country CSV Files ]
+│
+▼ (Folder Import in Power Query)
 [ Schema Standardization & File Isolation ]
-         │
-         ▼ (Unpivot Other Columns: Product Code & Price)
+│
+▼ (Unpivot Other Columns: Product Code & Price)
 [ Vertical Data Model: Product | Price | Month | Units | Country ]
-         │
-         ▼ (Type Normalization: Text to Int / Currency)
+│
+▼ (Type Normalization: Text to Int / Currency)
 [ Consolidated Data Model in Power BI ]
 
 ---

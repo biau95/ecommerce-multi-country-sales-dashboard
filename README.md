@@ -52,7 +52,7 @@ ADDCOLUMNS (
 )
 ```
 
-### 2.To complement the ETL pipeline, custom DAX logic was created to calculate core revenue metrics dynamically:
+### 2. To complement the ETL pipeline, custom DAX logic was created to calculate core revenue metrics dynamically:
 
 * **Calculated Column (Transaction Value):**
   ```dax
@@ -61,7 +61,6 @@ ADDCOLUMNS (
 
 ---
   
-```markdown
 ## ⚙️ Data Pipeline Architecture (ETL Steps)
 
 ```mermaid

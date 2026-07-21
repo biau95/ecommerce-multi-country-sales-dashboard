@@ -12,12 +12,12 @@ The key technical achievement of this project is a **100% automated ETL pipeline
 ## 🛠️ Tech Stack & Skills Demonstrated
 * **BI Tool:** Power BI Desktop
 * **Data Transformation (ETL):** Power Query (M Language)
-* **Data Modeling & DAX:** Custom Calculated Columns & Aggregations
+* **Data Modeling & DAX:** Star Schema Architecture, Dim_Date Generation, Custom Calculated Columns & Measures
 * **Key Techniques:**
   * Automated Folder Data Import
   * Dynamic Column Unpivoting (`Table.UnpivotOtherColumns`)
   * Data Type Normalization & Cleansing
-  * Dynamic Aggregations & Categorical Grouping
+  * Star Schema Data Modeling (Fact & Dimension Tables)
 
 ---
 
@@ -36,7 +36,23 @@ The key technical achievement of this project is a **100% automated ETL pipeline
 
 ## 📐 Data Modeling & DAX Calculations
 
-To complement the ETL pipeline, custom DAX logic was created to calculate core revenue metrics dynamically:
+The data model follows a **Star Schema** approach, connecting the main Fact table (`Projekt_Ecommerce`) with a custom Date Dimension table (`Dim_Data`) for robust time-based analysis.
+
+### 1. Dedicated Date Dimension Table (`Dim_Data`)
+Created using DAX to ensure seamless filtering and time-intelligence capabilities:
+
+```dax
+Dim_Data = 
+ADDCOLUMNS (
+    CALENDARAUTO(),
+    "Rok", YEAR([Date]),
+    "Miesiąc Nr", MONTH([Date]),
+    "Miesiąc", FORMAT([Date], "mmmm"),
+    "Kwartał", "Q" & FORMAT([Date], "Q")
+)
+```
+
+### 2.To complement the ETL pipeline, custom DAX logic was created to calculate core revenue metrics dynamically:
 
 * **Calculated Column (Transaction Value):**
   ```dax
@@ -45,18 +61,15 @@ To complement the ETL pipeline, custom DAX logic was created to calculate core r
 
 ---
   
+```markdown
 ## ⚙️ Data Pipeline Architecture (ETL Steps)
 
-[ Raw Country CSV Files ]
-│
-▼ (Folder Import in Power Query)
-[ Schema Standardization & File Isolation ]
-│
-▼ (Unpivot Other Columns: Product Code & Price)
-[ Vertical Data Model: Product | Price | Month | Units | Country ]
-│
-▼ (Type Normalization: Text to Int / Currency)
-[ Consolidated Data Model in Power BI ]
+```mermaid
+flowchart TD
+    A[Raw Country CSV Files] -->|Folder Import in Power Query| B[Schema Standardization & File Isolation]
+    B -->|Unpivot Other Columns| C[Vertical Data Model: Product, Price, Month, Units, Country]
+    C -->|Type Normalization & DAX Modeling| D[Star Schema Data Model in Power BI]
+```
 
 ---
 

@@ -1,6 +1,6 @@
 # 📊 E-Commerce Multi-Country Sales Dashboard (Automated Data Pipeline)
 
-![Dashboard Preview](dashboard_preview.png)
+![Dashboard Preview](dashboard_preview_v2.png)
 
 ## 📌 Project Overview
 This project delivers an interactive, end-to-end **Power BI Dashboard** designed to consolidate and analyze multi-country e-commerce sales performance (Poland, Germany, France). 
